@@ -16,6 +16,9 @@
     
     <!-- Lucide Icons Kütüphanesi -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Chart.js Kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="animated-gradient-bg flex flex-col min-h-screen">
 
@@ -35,6 +38,7 @@
                 <a href="#" class="nav-link" data-page="support">Destek</a>
                 <a href="#" class="nav-link" data-page="about">Biz Kimiz</a>
                 <a href="#" class="nav-link" data-page="contact">İletişim</a>
+                <a href="#" class="nav-link" data-page="faq">SSS</a>
             </div>
             <div id="auth-nav" class="hidden md:flex items-center space-x-2">
                 <div id="logged-out-nav">
@@ -57,6 +61,7 @@
             <a href="#" class="block py-2 nav-link" data-page="support">Destek</a>
             <a href="#" class="block py-2 nav-link" data-page="about">Biz Kimiz</a>
             <a href="#" class="block py-2 nav-link" data-page="contact">İletişim</a>
+            <a href="#" class="block py-2 nav-link" data-page="faq">SSS</a>
             <hr class="my-2 border-white/10">
             <div id="mobile-logged-out-nav">
                 <a href="#" class="block py-2 nav-link" data-page="login">Giriş Yap</a>
@@ -71,6 +76,7 @@
 
     <main class="flex-grow">
         <section id="home-page" class="page relative overflow-hidden">
+            <!-- Section -->
             <div id="globe-container"></div>
             <div class="relative container mx-auto px-4 pt-24 pb-16 z-10">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -87,7 +93,7 @@
                             <div class="bg-gray-900 rounded-lg p-4 space-y-4">
                                 <div class="flex justify-between items-center">
                                     <span class="text-sm font-semibold text-white">Duyuru Panosu</span>
-                                    <span class="text-xs text-gray-500">02 Temmuz 2025</span>
+                                    <span class="text-xs text-gray-500">04 Temmuz 2025</span>
                                 </div>
                                 <div class="space-y-3">
                                     <div class="flex items-start space-x-3 p-3 bg-gray-800/50 rounded-lg">
@@ -114,144 +120,661 @@
                     </div>
                 </div>
             </div>
-            <section class="py-16 sm:py-24">
-                <div class="container mx-auto px-4">
-                    <div class="text-center max-w-3xl mx-auto">
-                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Sıkça Sorulan Sorular</h2>
-                        <p class="text-lg sm:text-xl text-gray-400 mb-12">Aklınıza takılan soruların cevapları burada.</p>
-                    </div>
-                    <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
-                        <div class="faq-item border border-gray-700 rounded-lg overflow-hidden">
-                            <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                                <span class="font-semibold">InnoApp nedir?</span>
-                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-answer max-h-0 overflow-hidden">
-                                <p class="p-5 pt-0 text-gray-400">InnoApp, apartman yönetimini dijitalleştiren bir platformdur.</p>
+
+            <!-- PROHELER -->
+            <div class="container mx-auto px-4 py-20">
+                <div class="text-center mb-12">
+                    <h2 class="reveal text-4xl font-bold mb-4">Diğer Hizmetlerimiz</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto" style="--delay: 100ms;">Yönetimini üstlendiğimiz ve başarıyla tamamladığımız bazı projeler.</p>
+                </div>
+                <div class="reveal slider-wrapper" style="--delay: 200ms;">
+                    <button id="prev-slide" class="slide-button">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <ul class="project-slider">
+                        <li class="slider-item">
+                            <img src="public/innoapp_icon.png" class="w-full h-auto object-cover rounded-lg" alt="Proje 1 Resmi"> <!--eklenecek-->
+                            <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">Deneme 1</h3>
+                               <p class="text-sm text-gray-400">OCUDSAGCDUOSAGCDSUVODSGVU9DS açIKLAMA</p>
                             </div>
+                        </li>
+                        <li class="slider-item">
+                            <img src="test" class="w-full h-auto object-cover rounded-lg" alt="Proje 2 Resmi">
+                             <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">Deneme 3 500x300</h3>
+                               <p class="text-sm text-gray-400">Açıklama</p>
+                            </div>
+                        </li>
+                        <li class="slider-item">
+                            <img src="" class="w-full h-auto object-cover rounded-lg" alt="Proje 3 Resmi">
+                             <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">DENEME 5</h3>
+                               <p class="text-sm text-gray-400">AÇIKLAMA CUDWAFGCPDYISACGDASI</p>
+                            </div>
+                        </li>
+                        <li class="slider-item">
+                            <img src="" class="w-full h-auto object-cover rounded-lg" alt="Proje 4 Resmi">
+                             <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">DENEME 14</h3>
+                               <p class="text-sm text-gray-400">cvusapgcvdusa</p>
+                            </div>
+                        </li>
+                         <li class="slider-item">
+                            <img src="" class="w-full h-auto object-cover rounded-lg" alt="Proje 5 Resmi">
+                             <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">DENEME 4 4 44 4</h3>
+                               <p class="text-sm text-gray-400">aÇIKLAMA</p>
+                            </div>
+                        </li>
+                         <li class="slider-item">
+                            <img src="" class="w-full h-auto object-cover rounded-lg" alt="Proje 6 Resmi">
+                             <div class="p-4">
+                               <h3 class="font-bold text-lg mt-2">500X300 GORSEL OLUCAK</h3>
+                               <p class="text-sm text-gray-400">coıagcğu9odsafgcudso</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button id="next-slide" class="slide-button">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- PROJELER SON -->
+
+        </section>
+
+        <!-- ÖZELLİKLER BÖLÜMÜ -->
+        <section id="features-page" class="page">
+            <div class="container mx-auto px-4 py-20">
+                <div class="text-center mb-16">
+                     <h2 class="reveal text-4xl font-bold mb-4">InnoApp'in Eşsiz Özellikleri</h2>
+                     <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto" style="--delay: 100ms;">Yönetimi kolaylaştıran, hayatınıza değer katan modern çözümler.</p>
+                </div>
+                <div class="features-grid-final">
+                    <!-- Card 1 -->
+                    <div class="feature-card-final card-final-red">
+                        <div class="card-content-final">
+                            <h3 class="card-title-final">Aidat & Fatura Takibi</h3>
+                            <p class="card-subtitle-final">GÜVENLİ ÖDEME SİSTEMİ</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>FİNANS</span>
+                            </div>
+                            <p class="card-description-final">Kredi/banka kartı ile güvenli ödeme yapın, geçmiş ödemeleri ve borç durumunu anında görüntüleyin.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
                         </div>
-                        <div class="faq-item border border-gray-700 rounded-lg overflow-hidden">
-                            <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                                <span class="font-semibold">Uygulama güvenli mi?</span>
-                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
-                            </button>
-                            <div class="faq-answer max-h-0 overflow-hidden">
-                                <p class="p-5 pt-0 text-gray-400">Evet, tüm verileriniz güvenli sunucularda şifrelenerek saklanır.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="feature-card-final card-final-teal">
+                        <div class="card-content-final">
+                            <h3 class="card-title-final">Anlık Bildirimler</h3>
+                            <p class="card-subtitle-final">BİLGİ AKIŞINI KAÇIRMAYIN</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>İLETİŞİM</span>
                             </div>
+                            <p class="card-description-final">Yönetimden gelen önemli duyuruları, anketleri ve toplantı notlarını asla kaçırmayın.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="feature-card-final card-final-purple">
+                        <div class="card-content-final">
+                            <h3 class="card-title-final">Akıllı Asistan</h3>
+                            <p class="card-subtitle-final">7/24 YARDIMCINIZ</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>YAPAY ZEKA</span>
+                            </div>
+                            <p class="card-description-final">Sorularınızı yapay zekaya sorun, anında, kişiselleştirilmiş ve doğru yanıtlar alın.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
+                        </div>
+                    </div>
+                     <!-- Card 4 -->
+                    <div class="feature-card-final card-final-blue">
+                        <div class="card-content-final">
+                            <h3 class="card-title-final">Şeffaf Bütçe</h3>
+                            <p class="card-subtitle-final">GELİR-GİDER KONTROLÜ</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>YÖNETİM</span>
+                            </div>
+                            <p class="card-description-final">Apartman veya sitenizin tüm gelir ve giderlerini şeffaf bir şekilde takip edin, raporları inceleyin.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="feature-card-final card-final-green">
+                         <div class="card-content-final">
+                            <h3 class="card-title-final">Hızlı Arıza Çözümü</h3>
+                            <p class="card-subtitle-final">GÖRSEL DESTEKLİ YARDIM</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>DESTEK</span>
+                            </div>
+                            <p class="card-description-final">Ufak arızalar için profesyonel çağırmadan önce pratik ve görsel destekli çözüm önerileri alın.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="feature-card-final card-final-yellow">
+                        <div class="card-content-final">
+                            <h3 class="card-title-final">Online Topluluk</h3>
+                            <p class="card-subtitle-final">SOSYAL ETKİLEŞİM</p>
+                            <div class="card-category-final">
+                                <span class="line"></span>
+                                <span>TOPLULUK</span>
+                            </div>
+                            <p class="card-description-final">Komşularınızla iletişim kurun, etkinlikler düzenleyin ve sosyal bağlarınızı güçlendirin.</p>
+                            <a href="#" class="card-link-final">ÖZELLİĞİ İNCELE</a>
                         </div>
                     </div>
                 </div>
-            </section>
-        </section>
-
-        <section id="features-page" class="page">
-            <div class="container mx-auto px-4 py-20 text-center">
-                 <h2 class="reveal text-4xl font-bold mb-4">InnoApp'in Güçlü Özellikleri</h2>
-                 <p class="reveal text-xl text-gray-400 mb-12 max-w-2xl mx-auto" style="--delay: 100ms;">Apartman ve site yaşamını kolaylaştırmak için tasarlanmış yenilikçi çözümler.</p>
-                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                    <div class="reveal hover-card bg-gray-800/50 p-6 rounded-lg" style="--delay: 200ms;"><i data-lucide="dollar-sign" class="w-10 h-10 mb-4 text-blue-500"></i><h3 class="text-xl font-bold mb-2">Aidat ve Fatura Ödemeleri</h3><p class="text-gray-400">Kredi/banka kartı ile güvenli ödeme yapın, geçmiş ödemeleri görüntüleyin.</p></div>
-                    <div class="reveal hover-card bg-gray-800/50 p-6 rounded-lg" style="--delay: 300ms;"><i data-lucide="bell" class="w-10 h-10 mb-4 text-blue-500"></i><h3 class="text-xl font-bold mb-2">Anlık Bildirim Sistemi</h3><p class="text-gray-400">Önemli duyuruları, toplantı notlarını ve anketleri anında öğrenin.</p></div>
-                    <div class="reveal hover-card bg-gray-800/50 p-6 rounded-lg" style="--delay: 400ms;"><i data-lucide="line-chart" class="w-10 h-10 mb-4 text-blue-500"></i><h3 class="text-xl font-bold mb-2">Gelir-Gider Takibi</h3><p class="text-gray-400">Apartman bütçesini şeffaf bir şekilde takip edin, raporları inceleyin.</p></div>
-                    <div class="reveal hover-card bg-blue-900/30 p-6 rounded-lg border-2 border-blue-500" style="--delay: 500ms;"><i data-lucide="pen-square" class="w-10 h-10 mb-4 text-blue-400"></i><h3 class="text-xl font-bold mb-2 text-blue-300">✨ Akıllı Duyuru Oluşturma</h3><p class="text-gray-400">Yöneticiler için, tek bir anahtar kelimeyle profesyonel duyurular hazırlayın.</p></div>
-                    <div class="reveal hover-card bg-blue-900/30 p-6 rounded-lg border-2 border-blue-500" style="--delay: 600ms;"><i data-lucide="bot" class="w-10 h-10 mb-4 text-blue-400"></i><h3 class="text-xl font-bold mb-2 text-blue-300">✨ Akıllı Yardım Asistanı</h3><p class="text-gray-400">Sorularınızı yapay zekaya sorun, 7/24 anında, kişiselleştirilmiş yanıtlar alın.</p></div>
-                    <div class="reveal hover-card bg-blue-900/30 p-6 rounded-lg border-2 border-blue-500" style="--delay: 700ms;"><i data-lucide="wrench" class="w-10 h-10 mb-4 text-blue-400"></i><h3 class="text-xl font-bold mb-2 text-blue-300">✨ Hızlı Arıza Çözümü</h3><p class="text-gray-400">Ufak arızalar için profesyonel çağırmadan önce pratik çözüm önerileri alın.</p></div>
-                 </div>
             </div>
         </section>
+        <!-- ÖZELLİKLER BÖLÜMÜ SONU -->
 
+        <!-- FİYATLANDIRMA BÖLÜMÜ -->
         <section id="pricing-page" class="page">
              <div class="container mx-auto px-4 py-20 text-center">
                  <h2 class="reveal text-4xl font-bold mb-4">Size Uygun Paketi Seçin</h2>
-                 <p class="reveal text-xl text-gray-400 mb-12 max-w-2xl mx-auto" style="--delay: 100ms;">Şeffaf, esnek ve her bütçeye uygun fiyatlandırma seçenekleri.</p>
-                 <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="reveal hover-card bg-gray-800/50 p-8 rounded-lg text-left flex flex-col" style="--delay: 200ms;"><h3 class="text-2xl font-bold mb-2">Başlangıç</h3><p class="text-gray-400 mb-4">Küçük apartmanlar için</p><p class="text-5xl font-extrabold mb-4">₺99<span class="text-xl font-normal text-gray-400">/ay</span></p><ul class="space-y-3 text-gray-400 mb-8 flex-grow"><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>50 Daireye kadar</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Aidat ve Fatura Takibi</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Duyuru ve Anketler</li><li class="flex items-center"><i data-lucide="x" class="w-4 h-4 mr-2 text-red-500"></i>Yapay Zeka Özellikleri</li></ul><button data-page="register" class="btn w-full mt-auto bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg active:scale-95">Başla</button></div>
-                    <div class="reveal hover-card bg-blue-900/30 p-8 rounded-lg border-2 border-blue-500 text-left relative overflow-hidden flex flex-col" style="--delay: 300ms;"><div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-8 py-1 transform translate-x-10 rotate-45">Önerilen</div><h3 class="text-2xl font-bold mb-2 text-blue-300">Profesyonel</h3><p class="text-gray-400 mb-4">Orta ve büyük siteler için</p><p class="text-5xl font-extrabold mb-4">₺199<span class="text-xl font-normal text-gray-400">/ay</span></p><ul class="space-y-3 text-gray-400 mb-8 flex-grow"><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>200 Daireye kadar</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Tüm Başlangıç Özellikleri</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Tüm Yapay Zeka Özellikleri</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Telefon ve E-posta Desteği</li></ul><button data-page="register" class="btn w-full mt-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg active:scale-95">Satın Al</button></div>
-                    <div class="reveal hover-card bg-gray-800/50 p-8 rounded-lg text-left flex flex-col" style="--delay: 400ms;"><h3 class="text-2xl font-bold mb-2">Kurumsal</h3><p class="text-gray-400 mb-4">Yönetim şirketleri için</p><p class="text-5xl font-extrabold mb-4">Teklif Al</p><ul class="space-y-3 text-gray-400 mb-8 flex-grow"><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Sınırsız Daire</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Tüm Profesyonel Özellikler</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Özel Entegrasyonlar</li><li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Özel Müşteri Temsilcisi</li></ul><button data-page="contact" class="btn w-full mt-auto bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg active:scale-95">İletişime Geç</button></div>
+                 <p class="reveal text-xl text-gray-400 mb-8 max-w-2xl mx-auto" style="--delay: 100ms;">Şeffaf, esnek ve her bütçeye uygun fiyatlandırma seçenekleri.</p>
+                 
+                 <!-- Fiyatlandırma Toggle -->
+                 <div class="reveal flex justify-center items-center space-x-4 mb-12" style="--delay: 200ms;">
+                     <span class="font-semibold text-lg" id="monthly-label">Aylık</span>
+                     <label class="pricing-toggle-switch">
+                         <input type="checkbox" id="pricing-checkbox">
+                         <span class="pricing-slider"></span>
+                     </label>
+                     <span class="font-semibold text-lg text-gray-500" id="annual-label">
+                         Yıllık 
+                         <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-1 rounded-full ml-1">2 Ay Ücretsiz!</span>
+                     </span>
+                 </div>
+
+                 <!-- Fiyatlandırma Kartları -->
+                 <div class="pricing-grid">
+                    <!-- Başlangıç Paketi -->
+                    <div class="pricing-card">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Başlangıç</h3>
+                            <p class="text-gray-400 mb-6">Küçük apartmanlar için</p>
+                            <p class="text-5xl font-extrabold mb-1 price-tag" data-monthly="99" data-annual="990">₺99</p>
+                            <p class="text-gray-500 font-medium period-tag">/aylık</p>
+                        </div>
+                        <ul class="space-y-4 p-8 pt-0 text-gray-300 text-left">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>50 Daireye kadar</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Aidat ve Fatura Takibi</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Duyuru ve Anketler</li>
+                            <li class="flex items-center text-gray-500"><i data-lucide="x" class="w-5 h-5 text-red-500 mr-3"></i>Yapay Zeka Özellikleri</li>
+                        </ul>
+                        <div class="p-8 pt-0 mt-auto">
+                            <button data-page="register" class="btn w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg active:scale-95">Paketi Seç</button>
+                        </div>
+                    </div>
+
+                    <!-- packate -->
+                    <div class="pricing-card recommended">
+                        <div class="recommended-badge">EN POPÜLER</div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2 text-white">Profesyonel</h3>
+                            <p class="text-gray-300 mb-6">Orta ve büyük siteler için</p>
+                            <p class="text-5xl font-extrabold mb-1 price-tag" data-monthly="199" data-annual="1990">₺199</p>
+                            <p class="text-gray-400 font-medium period-tag">/aylık</p>
+                        </div>
+                        <ul class="space-y-4 p-8 pt-0 text-gray-200 text-left">
+                           <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>200 Daireye kadar</li>
+                           <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Tüm Başlangıç Özellikleri</li>
+                           <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Tüm Yapay Zeka Özellikleri</li>
+                           <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Telefon ve E-posta Desteği</li>
+                        </ul>
+                        <div class="p-8 pt-0 mt-auto">
+                           <button data-page="register" class="btn w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg active:scale-95">Paketi Seç</button>
+                        </div>
+                    </div>
+
+                    <!-- Kurumsal Paketi -->
+                    <div class="pricing-card">
+                         <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Kurumsal</h3>
+                            <p class="text-gray-400 mb-6">Yönetim şirketleri için</p>
+                            <p class="text-4xl font-extrabold my-6">Teklif Alın</p>
+                            <p class="text-gray-500 font-medium period-tag">&nbsp;</p>
+                        </div>
+                        <ul class="space-y-4 p-8 pt-0 text-gray-300 text-left">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Sınırsız Daire</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Tüm Profesyonel Özellikler</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Özel Entegrasyonlar</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i>Özel Müşteri Temsilcisi</li>
+                        </ul>
+                         <div class="p-8 pt-0 mt-auto">
+                           <button data-page="contact" class="btn w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg active:scale-95">İletişime Geç</button>
+                        </div>
+                    </div>
                  </div>
              </div>
         </section>
         
+        <!-- YÖNETİCİ PANELİ BÖLÜMÜ -->
         <section id="panel-page" class="page">
-             <div class="container mx-auto px-4 py-20 text-center">
-                 <h2 class="reveal text-4xl font-extrabold mb-4">AI Destekli Yönetici Paneli</h2>
-                 <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">Yönetim görevlerinizi yapay zeka ile saniyeler içinde kolaylaştırın.</p>
-            </div>
-            <div class="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="reveal bg-gray-800/50 p-6 rounded-lg border border-white/10 lg:col-span-1" style="--delay: 200ms;"><h4 class="font-semibold text-lg mb-2 text-blue-400">✨ Akıllı Duyuru Oluşturucu</h4><p class="text-sm text-gray-400 mb-3">Duyuru konusunu yazın, AI sizin için profesyonel bir metin oluştursun.</p><textarea id="announcement-prompt" rows="2" class="w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Örn: 15 Haziran'da havuz temizliği yapılacak."></textarea><button id="generate-announcement-button" class="btn mt-2 w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center justify-center active:scale-95">Duyuru Oluştur</button><div id="announcement-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div><div id="announcement-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 text-sm whitespace-pre-wrap"></div></div>
-                <div class="reveal bg-gray-800/50 p-6 rounded-lg border border-white/10 lg:col-span-1" style="--delay: 300ms;"><h4 class="font-semibold text-lg mb-2 text-green-400">✨ Bütçe Optimizasyon Asistanı</h4><p class="text-sm text-gray-400 mb-3">Tasarruf hedefinizi yazın, AI uygulanabilir öneriler sunsun.</p><textarea id="budget-prompt" rows="2" class="w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Örn: Ortak alan elektrik faturalarını düşürmek"></textarea><button id="get-budget-suggestion-button" class="btn mt-2 w-full bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 flex items-center justify-center active:scale-95">Öneri Al</button><div id="budget-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div><div id="budget-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 text-sm whitespace-pre-wrap"></div></div>
-                <div class="reveal bg-gray-800/50 p-6 rounded-lg border border-white/10 lg:col-span-1" style="--delay: 400ms;"><h4 class="font-semibold text-lg mb-2 text-yellow-400">✨ Uyuşmazlık Çözüm Asistanı</h4><p class="text-sm text-gray-400 mb-3">Komşular arası bir sorunu açıklayın, AI yapıcı bir çözüm metni hazırlasın.</p><textarea id="conflict-prompt" rows="2" class="w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-yellow-500 focus:ring-yellow-500" placeholder="Örn: Üst kat komşusu sürekli gürültü yapıyor."></textarea><button id="resolve-conflict-button" class="btn mt-2 w-full bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-700 flex items-center justify-center active:scale-95">Çözüm Metni Oluştur</button><div id="conflict-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div><div id="conflict-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 text-sm whitespace-pre-wrap"></div></div>
+            <div class="container mx-auto px-4 py-20">
+                <!-- Başlık -->
+                <div class="text-center mb-12">
+                    <h2 class="reveal text-4xl font-bold mb-4">Yönetici Paneli</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto" style="--delay: 100ms;">Tüm yönetim araçlarınız tek bir yerde.</p>
+                </div>
+
+                <!-- İstatistik Kartları -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-card bg-blue-900/50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm font-medium text-blue-300">Toplam Sakin</p>
+                            <i data-lucide="users" class="w-8 h-8 text-blue-400"></i>
+                        </div>
+                        <p class="text-4xl font-bold mt-2">124</p>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="stat-card bg-green-900/50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm font-medium text-green-300">Aidat Ödeme Oranı</p>
+                            <i data-lucide="percent" class="w-8 h-8 text-green-400"></i>
+                        </div>
+                        <p class="text-4xl font-bold mt-2">92%</p>
+                    </div>
+                    <!-- Stat Card 3 -->
+                    <div class="stat-card bg-yellow-900/50">
+                         <div class="flex justify-between items-center">
+                            <p class="text-sm font-medium text-yellow-300">Bekleyen Görevler</p>
+                            <i data-lucide="alert-circle" class="w-8 h-8 text-yellow-400"></i>
+                        </div>
+                        <p class="text-4xl font-bold mt-2">3</p>
+                    </div>
+                    <!-- Stat Card 4 -->
+                    <div class="stat-card bg-red-900/50">
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm font-medium text-red-300">Çözülen Arızalar (Bu Ay)</p>
+                            <i data-lucide="wrench" class="w-8 h-8 text-red-400"></i>
+                        </div>
+                        <p class="text-4xl font-bold mt-2">8</p>
+                    </div>
+                </div>
+
+                <!-- Ana Panel İçeriği -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Sol Sütun (Grafik ve Son Aktiviteler) -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Gelir-Gider Grafiği -->
+                        <div class="panel-widget">
+                            <h3 class="panel-widget-title">Aylık Finansal Durum</h3>
+                            <div class="chart-container">
+                                <canvas id="financial-chart"></canvas>
+                            </div>
+                        </div>
+                        <!-- Son Aktiviteler -->
+                        <div class="panel-widget">
+                            <h3 class="panel-widget-title">Son Duyurular</h3>
+                            <ul class="space-y-4">
+                                <li class="activity-item">
+                                    <i data-lucide="megaphone" class="w-5 h-5 text-blue-400 mr-4 flex-shrink-0"></i>
+                                    <p class="text-gray-300"><strong class="font-semibold text-white">Genel Kurul Toplantısı</strong> 15 Temmuz'da yapılacaktır.</p>
+                                    <span class="text-xs text-gray-500 ml-auto whitespace-nowrap">2 gün önce</span>
+                                </li>
+                                <li class="activity-item">
+                                    <i data-lucide="droplets" class="w-5 h-5 text-cyan-400 mr-4 flex-shrink-0"></i>
+                                    <p class="text-gray-300"><strong class="font-semibold text-white">Su Kesintisi</strong> planlı bakım nedeniyle yarın 10:00-14:00 arası.</p>
+                                    <span class="text-xs text-gray-500 ml-auto whitespace-nowrap">1 gün önce</span>
+                                </li>
+                                 <li class="activity-item">
+                                    <i data-lucide="party-popper" class="w-5 h-5 text-yellow-400 mr-4 flex-shrink-0"></i>
+                                    <p class="text-gray-300"><strong class="font-semibold text-white">Yaza Merhaba Partisi</strong> için hazırlıklar başladı.</p>
+                                     <span class="text-xs text-gray-500 ml-auto whitespace-nowrap">3 saat önce</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sağ Sütun-->
+                    <div class="lg:col-span-1 panel-widget">
+                         <h3 class="panel-widget-title">✨ Akıllı Araçlar</h3>
+                         <div class="space-y-6">
+                            <!-- Akıllı Duyuru Oluşturucu -->
+                            <div>
+                                <h4 class="font-semibold text-lg mb-2 text-blue-400">Akıllı Duyuru Oluşturucu</h4>
+                                <p class="text-sm text-gray-400 mb-3">Duyuru konusunu yazın, AI sizin için profesyonel bir metin oluştursun.</p>
+                                <textarea id="announcement-prompt-panel" rows="2" class="panel-textarea" placeholder="Örn: 15 Haziran'da havuz temizliği..."></textarea>
+                                <button id="generate-announcement-button-panel" class="panel-btn bg-blue-600 hover:bg-blue-700">Oluştur</button>
+                            </div>
+                             <!-- Bütçe Optimizasyon Asistanı -->
+                            <div>
+                                <h4 class="font-semibold text-lg mb-2 text-green-400">Bütçe Optimizasyon Asistanı</h4>
+                                <p class="text-sm text-gray-400 mb-3">Tasarruf hedefinizi yazın, AI uygulanabilir öneriler sunsun.</p>
+                                <textarea id="budget-prompt-panel" rows="2" class="panel-textarea" placeholder="Örn: Ortak alan elektrik faturaları..."></textarea>
+                                <button id="get-budget-suggestion-button-panel" class="panel-btn bg-green-600 hover:bg-green-700">Öneri Al</button>
+                            </div>
+                            <!-- Uyuşmazlık Çözüm Asistanı -->
+                            <div>
+                                <h4 class="font-semibold text-lg mb-2 text-yellow-400">Uyuşmazlık Çözüm Asistanı</h4>
+                                <p class="text-sm text-gray-400 mb-3">Komşular arası bir sorunu açıklayın, AI yapıcı bir çözüm metni hazırlasın.</p>
+                                <textarea id="conflict-prompt-panel" rows="2" class="panel-textarea" placeholder="Örn: Üst kat komşusu gürültü..."></textarea>
+                                <button id="resolve-conflict-button-panel" class="panel-btn bg-yellow-600 hover:bg-yellow-700">Çözüm Metni Oluştur</button>
+                            </div>
+                         </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- TOPLULUK SAYFASI -->
         <section id="community-page" class="page">
-             <div class="container mx-auto px-4 py-20 text-center">
-                 <h2 class="reveal text-4xl font-extrabold mb-4">Topluluk Etkinlikleri</h2>
-                 <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">Yapay zeka ile apartmanınız için harika etkinlikler planlayın ve komşuluk bağlarınızı güçlendirin.</p>
-            </div>
-            <div class="reveal container mx-auto px-4 max-w-4xl" style="--delay: 200ms;">
-                 <div class="bg-gray-800/50 p-8 rounded-lg border border-white/10"><h3 class="text-2xl font-bold mb-4 text-center text-purple-400">✨ Etkinlik Planlayıcı</h3><p class="text-gray-400 mb-6 text-center">Aklınızdaki etkinlik fikrini yazın, gerisini yapay zekaya bırakın.</p><textarea id="event-prompt" rows="3" class="w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Örn: Çocuklar için bahçede sinema gecesi"></textarea><button id="organize-event-button" class="btn mt-4 w-full bg-purple-600 text-white font-semibold py-3 px-5 rounded-lg hover:bg-purple-700 active:scale-95">Etkinlik Planı Oluştur</button><div id="event-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div><div id="event-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 whitespace-pre-wrap"></div></div>
+            <div class="container mx-auto px-4 py-20">
+                <!-- Başlık -->
+                <div class="text-center mb-16">
+                    <h2 class="reveal text-4xl font-bold mb-4">InnoApp Topluluğuna Hoş Geldiniz</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">
+                        Komşularınızla bağlantı kurun, etkinlikler planlayın ve daha güçlü bir topluluk oluşturun.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Sol Sütun: Etkinlikler ve Forum -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Yaklaşan Etkinlikler -->
+                        <div class="panel-widget">
+                            <h3 class="panel-widget-title">Yaklaşan Etkinlikler</h3>
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <!-- Event Card 1 -->
+                                <div class="event-card">
+                                    <div class="event-date bg-purple-500">
+                                        <span class="day">18</span>
+                                        <span class="month">TEM</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4 class="event-title">Apartman Barbekü Partisi</h4>
+                                        <p class="event-time"><i data-lucide="clock" class="w-4 h-4 mr-2"></i>19:00 - Bahçe Alanı</p>
+                                    </div>
+                                </div>
+                                <!-- Event Card 2 -->
+                                <div class="event-card">
+                                    <div class="event-date bg-teal-500">
+                                        <span class="day">25</span>
+                                        <span class="month">TEM</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4 class="event-title">Çocuklar için Sinema Gecesi</h4>
+                                        <p class="event-time"><i data-lucide="clock" class="w-4 h-4 mr-2"></i>20:30 - Sığınak</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Topluluk Forumu -->
+                        <div class="panel-widget">
+                            <h3 class="panel-widget-title">Topluluk Panosu</h3>
+                            <div class="space-y-4">
+                                <!-- Forum Post 1 -->
+                                <div class="forum-post">
+                                    <img src="https://placehold.co/40x40/7c3aed/ffffff?text=AY" alt="Avatar" class="w-10 h-10 rounded-full">
+                                    <div class="flex-grow">
+                                        <p class="text-gray-300"><strong class="font-semibold text-white">Ayşe Yılmaz</strong> kayıp bir kedi ilanı paylaştı: "Siyah beyaz kedimiz Tekir kayboldu..."</p>
+                                        <span class="text-xs text-gray-500">2 saat önce</span>
+                                    </div>
+                                    <button class="forum-reply-btn"><i data-lucide="message-square" class="w-4 h-4 mr-2"></i>Yanıtla</button>
+                                </div>
+                                <!-- Forum Post 2 -->
+                                <div class="forum-post">
+                                    <img src="https://placehold.co/40x40/16a34a/ffffff?text=ME" alt="Avatar" class="w-10 h-10 rounded-full">
+                                    <div class="flex-grow">
+                                        <p class="text-gray-300"><strong class="font-semibold text-white">Mehmet Kaya</strong> yeni bir konu açtı: "Eski eşyalarınızı bağışlayabileceğiniz yerler."</p>
+                                        <span class="text-xs text-gray-500">5 saat önce</span>
+                                    </div>
+                                    <button class="forum-reply-btn"><i data-lucide="message-square" class="w-4 h-4 mr-2"></i>Yanıtla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sağ Sütun Etkinlik Planlayıcı -->
+                    <div class="lg:col-span-1 panel-widget">
+                         <h3 class="panel-widget-title">✨ AI Etkinlik Planlayıcı</h3>
+                         <p class="text-gray-400 mb-4">Harika bir etkinlik fikriniz mi var? Detayları yapay zekaya bırakın, sizin için her şeyi planlasın.</p>
+                         <textarea id="event-prompt" rows="3" class="panel-textarea" placeholder="Örn: Çocuklar için bahçede sinema gecesi"></textarea>
+                         <button id="organize-event-button" class="panel-btn bg-purple-600 hover:bg-purple-700 mt-4">Etkinlik Planı Oluştur</button>
+                         <div id="event-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div>
+                         <div id="event-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 whitespace-pre-wrap"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- DESTEK SAYFASI -->
         <section id="support-page" class="page">
-            <div class="container mx-auto px-4 py-20 text-center">
-                <h2 class="reveal text-4xl font-extrabold mb-4">Yardıma mı İhtiyacınız Var?</h2>
-                <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">Sorularınıza anında yanıt bulun veya ekibimize ulaşın.</p>
-            </div>
-             <div class="container mx-auto px-4 mt-8 max-w-5xl grid md:grid-cols-2 gap-12">
-                <div class="reveal bg-gray-800/50 p-8 rounded-lg shadow-lg border border-white/10" style="--delay: 200ms;">
-                    <h3 class="text-2xl font-bold mb-4 text-center text-red-400">✨ Hızlı Arıza Tespiti (Görsel Destekli)</h3>
-                    <p class="text-gray-400 mb-6 text-center">Sorunun fotoğrafını yükleyin ve kısaca açıklayın, yapay zeka analiz edip çözüm önerileri sunsun.</p>
-                    <input type="file" id="troubleshoot-image" class="hidden" accept="image/*">
-                    <label for="troubleshoot-image" class="w-full h-32 mb-4 bg-gray-900 border-2 border-dashed border-gray-700 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-800/50">
-                        <div id="image-preview-container" class="hidden w-full h-full p-1"><img id="image-preview" src="" alt="Yüklenen Resim Önizlemesi" class="w-full h-full object-contain rounded-md"></div>
-                        <div id="upload-placeholder" class="flex flex-col items-center justify-center"><i data-lucide="upload-cloud" class="w-8 h-8 text-gray-500"></i><p class="text-sm text-gray-500">Fotoğraf Yüklemek İçin Tıklayın</p></div>
-                    </label>
-                    <div class="flex gap-2">
-                        <input type="text" id="troubleshoot-prompt" class="flex-grow w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-red-500 focus:ring-red-500 px-4" placeholder="Örn: Musluk damlatıyor">
-                        <button id="get-troubleshoot-suggestion-button" class="btn bg-red-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-red-700 active:scale-95">Öneri Al</button>
-                    </div>
-                    <div id="troubleshoot-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div>
-                    <div id="troubleshoot-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 whitespace-pre-wrap"></div>
+            <div class="container mx-auto px-4 py-20">
+                <!-- Başlık -->
+                <div class="text-center mb-16">
+                    <h2 class="reveal text-4xl font-bold mb-4">Yardım ve Destek Merkezi</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">
+                        Aradığınız çözümü bulamadınız mı? Size yardımcı olmak için buradayız.
+                    </p>
                 </div>
-                <div class="reveal bg-gray-800/50 p-8 rounded-lg shadow-lg border border-white/10" style="--delay: 300ms;">
-                    <h3 class="text-2xl font-bold mb-4 text-center text-blue-400">✨ Akıllı Yardım Asistanı</h3>
-                    <p class="text-gray-400 mb-6 text-center">Uygulama ile ilgili sorunuzu aşağıya yazın, asistanımız anında yanıtlasın.</p>
-                    <div class="flex gap-2">
-                        <input type="text" id="support-prompt" class="flex-grow w-full rounded-md border-gray-700 bg-gray-900 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 px-4" placeholder="Örn: Aidatımı nasıl öderim?">
-                        <button id="ask-ai-button" class="btn bg-blue-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-blue-700 active:scale-95">Sor</button>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Sol Sütun: Yeni Chat Arayüzü -->
+                    <div class="lg:col-span-2 panel-widget">
+                        <div id="chat-container">
+                            <div id="chat-history">
+                                <!-- AI Welcome Message -->
+                                <div class="chat-message ai-message">
+                                    <img src="https://placehold.co/40x40/8b5cf6/ffffff?text=AI" alt="AI Avatar" class="chat-avatar">
+                                    <div class="chat-bubble">
+                                        <p>Merhaba! Ben InnoApp akıllı yardım asistanınız. Size nasıl yardımcı olabilirim?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="support-input-area">
+                                <textarea id="support-prompt" class="support-textarea" rows="1" placeholder="Sorunuzu buraya yazın..."></textarea>
+                                <div class="support-actions">
+                                    <label for="troubleshoot-image" class="support-attach-btn" title="Görsel Ekle">
+                                        <i data-lucide="paperclip" class="w-5 h-5"></i>
+                                        <input type="file" id="troubleshoot-image" class="hidden" accept="image/*">
+                                    </label>
+                                    <div id="image-preview-container" class="hidden">
+                                        <img id="image-preview" src="" alt="Önizleme"/>
+                                        <button id="remove-image-btn" title="Görseli Kaldır"><i data-lucide="x" class="w-4 h-4"></i></button>
+                                    </div>
+                                    <button id="ask-ai-button" class="support-send-btn" title="Gönder">
+                                        <i data-lucide="send" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="support-loader" class="hidden mt-4 flex justify-center"><div class="loader"></div></div>
-                    <div id="support-result" class="mt-4 p-4 bg-gray-900 rounded-md border border-gray-700 whitespace-pre-wrap"></div>
+
+                    <!-- Sağ Sütun: SSS ve Diğer Kanallar -->
+                    <div class="space-y-8">
+                        <div class="panel-widget">
+                            <h3 class="panel-widget-title">Sıkça Sorulan Sorular</h3>
+                            <div class="space-y-2">
+                                <details class="faq-item">
+                                    <summary class="faq-question">Şifremi nasıl sıfırlarım?</summary>
+                                    <p class="faq-answer">Giriş sayfasındaki "Şifremi Unuttum" bağlantısını kullanarak e-posta adresinize bir sıfırlama bağlantısı gönderebilirsiniz.</p>
+                                </details>
+                                 <details class="faq-item">
+                                    <summary class="faq-question">Aidat ödemeleri güvenli mi?</summary>
+                                    <p class="faq-answer">Evet, tüm ödemeleriniz 256-bit SSL şifreleme ile korunmaktadır ve ödeme bilgileriniz asla sunucularımızda saklanmaz.</p>
+                                </details>
+                                 <details class="faq-item">
+                                    <summary class="faq-question">Yapay zeka asistanı hangi konularda yardımcı olabilir?</summary>
+                                    <p class="faq-answer">Akıllı asistanımız; uygulama kullanımı, aidat bilgileri, arıza bildirimleri ve genel yönetim konularında size 7/24 destek olabilir.</p>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="panel-widget">
+                             <h3 class="panel-widget-title">Diğer Destek Kanalları</h3>
+                             <ul class="space-y-4">
+                                 <li class="contact-channel-item">
+                                    <i data-lucide="mail" class="w-6 h-6 text-blue-400"></i>
+                                    <div>
+                                        <h4 class="font-semibold">E-posta Gönderin</h4>
+                                        <a href="mailto:destek@innoapp.com" class="text-blue-400 hover:underline">inno@innoap.net</a>
+                                    </div>
+                                 </li>
+                                  <li class="contact-channel-item">
+                                    <i data-lucide="phone" class="w-6 h-6 text-green-400"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Bizi Arayın</h4>
+                                        <a href="tel:+905551234567" class="text-green-400 hover:underline">0555 555 55 55</a>
+                                    </div>
+                                 </li>
+                             </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- BİZ KİMİZ SAYFASI -->
         <section id="about-page" class="page">
              <div class="container mx-auto px-4 py-20">
-                 <div class="max-w-3xl mx-auto text-center">
-                     <h2 class="reveal text-4xl font-bold mb-4">Hikayemiz</h2>
-                     <p class="reveal text-xl text-gray-400" style="--delay: 100ms;">InnoApp, apartman ve site yönetiminde yaşanan iletişim kopuklukları, şeffaflık eksikliği ve verimsiz süreçlere modern bir çözüm getirmek amacıyla 2025 yılında Ankara'da kuruldu. Geleneksel yöntemlerin yarattığı zaman ve para kaybını ortadan kaldırmak için yola çıktık. Amacımız, en son teknolojiyi kullanarak hem yöneticilerin işini kolaylaştırmak hem de sakinlerin yaşam kalitesini artırmaktır. Yapay zeka destekli özelliklerimizle, yönetimi sadece kolay değil, aynı zamanda akıllı hale getiriyoruz.</p>
+                 <div class="max-w-4xl mx-auto text-center">
+                     <h2 class="reveal text-4xl font-bold mb-4 gradient-text">Biz Kimiz?</h2>
+                     <p class="reveal text-xl text-gray-300" style="--delay: 100ms;">
+                         Yönetim süreçlerini dijitalleştirerek daha şeffaf, verimli ve yaşanabilir bir dünya yaratma tutkusuyla bir araya gelmiş bir ekibiz.
+                     </p>
+                 </div>
+
+                 <div class="grid md:grid-cols-2 gap-12 items-center my-20">
+                     <div class="reveal" style="--delay: 200ms;">
+                         <img src="" alt="Foto" class="rounded-2xl shadow-2xl shadow-blue-500/20">
+                     </div>
+                     <div class="reveal" style="--delay: 300ms;">
+                        <h3 class="text-3xl font-bold mb-4">Hikayemiz</h3>
+                        <p class="text-gray-400 text-lg">
+                            InnoApp, 2025 yılında Ankara'da, apartman ve site yönetiminde yaşanan iletişim kopuklukları, şeffaflık eksikliği ve verimsiz süreçlere modern bir çözüm getirmek amacıyla kuruldu. Geleneksel yöntemlerin yarattığı zaman ve para kaybını ortadan kaldırmak için yola çıktık. Amacımız, en son teknolojiyi kullanarak hem yöneticilerin işini kolaylaştırmak hem de sakinlerin yaşam kalitesini artırmaktır. Yapay zeka destekli özelliklerimizle, yönetimi sadece kolay değil, aynı zamanda akıllı hale getiriyoruz.
+                        </p>
+                     </div>
+                 </div>
+
+                 <!-- Misyon & Vizyon -->
+                 <div class="grid md:grid-cols-2 gap-8 my-20">
+                     <div class="panel-widget reveal" style="--delay: 200ms;">
+                         <i data-lucide="rocket" class="w-12 h-12 text-purple-400 mb-4"></i>
+                         <h3 class="panel-widget-title">Misyonumuz</h3>
+                         <p class="text-gray-400">Teknolojiyi insan odaklı bir yaklaşımla birleştirerek, toplu yaşam alanlarındaki yönetim süreçlerini basitleştirmek ve komşuluk ilişkilerini güçlendirmek.</p>
+                     </div>
+                     <div class="panel-widget reveal" style="--delay: 300ms;">
+                         <i data-lucide="eye" class="w-12 h-12 text-cyan-400 mb-4"></i>
+                         <h3 class="panel-widget-title">Vizyonumuz</h3>
+                         <p class="text-gray-400">Türkiye'nin lider site ve apartman yönetimi platformu olmak ve akıllı şehir çözümlerine öncülük ederek geleceğin yaşam alanlarını şekillendirmek.</p>
+                     </div>
+                 </div>
+
+                 <!-- Ekip -->
+                 <div class="my-20">
+                     <div class="text-center mb-12">
+                         <h2 class="reveal text-4xl font-bold mb-4">Kurucu Ekip</h2>
+                         <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto" style="--delay: 100ms;">Bu yolculuğa öncülük edenler.</p>
+                     </div>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                         <!-- Team Member 1 -->
+                         <div class="team-card reveal" style="--delay: 200ms;">
+                             <img src="" alt="Ekip Üyesi" class="team-avatar">
+                             <h4 class="text-xl font-bold mt-4">Metehan Dülger</h4>
+                             <p class="text-blue-400 font-semibold">CEO & Kurucu Ortak</p>
+                             <div class="team-socials">
+                                 <a href="#"><i data-lucide="linkedin"></i></a>
+                                 <a href="#"><i data-lucide="twitter"></i></a>
+                             </div>
+                         </div>
+                         <!-- Team Member 2 -->
+                         <div class="team-card reveal" style="--delay: 300ms;">
+                             <img src="" alt="Ekip Üyesi" class="team-avatar">
+                             <h4 class="text-xl font-bold mt-4">Eren Arif K.</h4>
+                             <p class="text-blue-400 font-semibold">CTO & Kurucu Ortak</p>
+                              <div class="team-socials">
+                                 <a href="#"><i data-lucide="linkedin"></i></a>
+                                 <a href="#"><i data-lucide="github"></i></a>
+                             </div>
+                         </div>
+                         <!-- Team Member 3 -->
+                         <div class="team-card reveal" style="--delay: 400ms;">
+                             <img src="" alt="Ekip Üyesi" class="team-avatar">
+                             <h4 class="text-xl font-bold mt-4">Bedirhan Doğan</h4>
+                             <p class="text-blue-400 font-semibold">Tasarım Lideri</p>
+                              <div class="team-socials">
+                                 <a href="#"><i data-lucide="linkedin"></i></a>
+                                 <a href="#"><i data-lucide="dribbble"></i></a>
+                             </div>
+                         </div>
+                     </div>
                  </div>
              </div>
         </section>
 
+        <!-- İLETİŞİM SAYFASI -->
         <section id="contact-page" class="page">
              <div class="container mx-auto px-4 py-20">
-                 <div class="max-w-xl mx-auto text-center">
-                     <h2 class="reveal text-4xl font-bold mb-4">Bize Ulaşın</h2>
-                     <p class="reveal text-xl text-gray-400 mb-8" style="--delay: 100ms;">Her türlü soru, öneri ve iş birliği teklifleriniz için buradayız.</p>
-                     <form id="contact-form" action="#" class="reveal space-y-4 text-left" style="--delay: 200ms;">
-                         <div><label for="name" class="text-sm font-medium text-gray-400">Adınız</label><input type="text" id="name" class="w-full mt-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-blue-500 outline-none transition"></div>
-                         <div><label for="contact-email" class="text-sm font-medium text-gray-400">E-posta Adresiniz</label><input type="email" id="contact-email" class="w-full mt-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-blue-500 outline-none transition"></div>
-                         <div><div class="flex justify-between items-center"><label for="message" class="text-sm font-medium text-gray-400">Mesajınız</label><button type="button" id="improve-message-button" class="btn text-sm text-blue-500 font-semibold hover:text-blue-400">✨ Mesajımı İyileştir</button></div><textarea id="message" rows="4" class="w-full mt-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:border-blue-500 focus:ring-blue-500 outline-none transition"></textarea><div id="message-loader" class="hidden mt-2 flex items-center text-sm text-gray-500"><div class="loader mr-2"></div> İyileştiriliyor...</div></div>
-                         <button type="submit" class="btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg active:scale-95">Gönder</button>
-                     </form>
-                     <div id="contact-success-message" class="hidden text-center bg-green-900/50 border border-green-700 text-green-300 px-4 py-8 rounded-lg mt-6">
-                        <i data-lucide="check-circle" class="w-16 h-16 mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-bold">Mesajınız Alındı!</h3>
-                        <p class="mt-2 text-green-400">En kısa sürede size geri dönüş yapacağız.</p>
-                    </div>
+                 <div class="text-center mb-16">
+                     <h2 class="reveal text-4xl font-bold mb-4">İletişime Geçin</h2>
+                     <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">Sorularınız, önerileriniz veya iş birliği teklifleriniz mi var? Sizden haber almayı çok isteriz.</p>
+                 </div>
+                 <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Sol Sütun: İletişim Bilgileri -->
+                     <div class="lg:col-span-1 space-y-8">
+                         <div class="contact-info-card reveal" style="--delay: 200ms;">
+                             <div class="contact-info-icon bg-blue-500/20 text-blue-400"><i data-lucide="mail"></i></div>
+                             <div>
+                                 <h3 class="text-xl font-bold">E-posta</h3>
+                                 <p class="text-gray-400 mb-2">Genel sorularınız için.</p>
+                                 <a href="mailto:destek@innoapp.com" class="text-blue-400 font-semibold hover:underline">inno@innoap.net</a>
+                             </div>
+                         </div>
+                         <div class="contact-info-card reveal" style="--delay: 300ms;">
+                             <div class="contact-info-icon bg-green-500/20 text-green-400"><i data-lucide="phone"></i></div>
+                             <div>
+                                 <h3 class="text-xl font-bold">Telefon</h3>
+                                 <p class="text-gray-400 mb-2">Hafta içi 09:00-18:00 arası.</p>
+                                 <a href="tel:+905551234567" class="text-green-400 font-semibold hover:underline">0555 555 55 55</a>
+                             </div>
+                         </div>
+                         <div class="contact-info-card reveal" style="--delay: 400ms;">
+                            <div class="contact-info-icon bg-purple-500/20 text-purple-400"><i data-lucide="map-pin"></i></div>
+                             <div>
+                                 <h3 class="text-xl font-bold">Adres</h3>
+                                 <p class="text-gray-400">Ankara Çankaya</p>
+                                 <p class="text-gray-500">Çankaya, Ankara</p>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Sağ Sütun: Form -->
+                     <div class="lg:col-span-2 panel-widget reveal" style="--delay: 500ms;">
+                         <h3 class="panel-widget-title">Bize Mesaj Gönderin</h3>
+                         <form id="contact-form" action="#" class="space-y-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div class="contact-input-group">
+                                    <label for="name" class="contact-label">Adınız</label>
+                                    <input type="text" id="name" name="name" class="contact-input" required>
+                                </div>
+                                <div class="contact-input-group">
+                                    <label for="contact-email" class="contact-label">E-posta Adresiniz</label>
+                                    <input type="email" id="contact-email" name="email" class="contact-input" required>
+                                </div>
+                            </div>
+                             <div class="contact-input-group">
+                                 <label for="message" class="contact-label">Mesajınız</label>
+                                 <textarea id="message" name="message" rows="5" class="contact-input" required></textarea>
+                             </div>
+                             <div class="flex justify-end">
+                                <button type="submit" class="btn bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 active:scale-95">Mesajı Gönder</button>
+                             </div>
+                         </form>
+                         <div id="contact-success-message" class="hidden text-center bg-green-900/50 border border-green-700 text-green-300 px-4 py-8 rounded-lg mt-6">
+                            <i data-lucide="check-circle" class="w-16 h-16 mx-auto mb-4"></i>
+                            <h3 class="text-2xl font-bold">Mesajınız Alındı!</h3>
+                            <p class="mt-2 text-green-400">En kısa sürede size geri dönüş yapacağız.</p>
+                        </div>
+                     </div>
                  </div>
              </div>
         </section>
@@ -322,36 +845,201 @@
             </div>
         </section>
 
+        <!-- GÜNCELLENMİŞ KULLANIM KOŞULLARI SAYFASI -->
         <section id="terms-page" class="page">
             <div class="container mx-auto px-4 py-20">
-                <div class="max-w-4xl mx-auto bg-gray-800/20 p-8 rounded-lg prose prose-invert prose-lg">
-                    <h2 class="text-4xl font-bold gradient-text">Kullanım Koşulları</h2>
-                    <p class="text-gray-400">Son Güncelleme: 02 Temmuz 2025</p>
-                    <p>Lütfen InnoApp hizmetlerini kullanmadan önce bu kullanım koşullarını dikkatlice okuyun. Hizmetlerimizi kullanarak, bu koşullara bağlı kalmayı kabul etmiş olursunuz.</p>
-                    <h3>1. Hizmetlerin Tanımı</h3>
-                    <p>InnoApp, apartman ve site sakinleri ile yöneticiler arasında iletişimi kolaylaştıran, aidat takibi, duyuru paylaşımı ve diğer yönetimsel işlemleri dijitalleştiren bir platformdur.</p>
-                    <h3>2. Kullanıcı Yükümlülükleri</h3>
-                    <ul>
-                        <li>Kayıt sırasında verdiğiniz bilgilerin doğru ve güncel olduğunu taahhüt edersiniz.</li>
-                        <li>Hesap güvenliğinizden siz sorumlusunuz. Şifrenizi kimseyle paylaşmayınız.</li>
-                        <li>Platformu yasa dışı veya yetkisiz amaçlar için kullanamazsınız.</li>
-                    </ul>
-                    <h3>3. Fikri Mülkiyet</h3>
-                    <p>InnoApp platformundaki tüm metinler, grafikler, logolar, ikonlar ve yazılımlar InnoApp'in mülkiyetindedir ve telif hakkı yasalarıyla korunmaktadır.</p>
+                <div class="text-center mb-16">
+                    <h2 class="reveal text-4xl font-bold mb-4">Kullanım Koşulları</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">
+                        Hizmetlerimizi kullanarak bu koşulları kabul etmiş sayılırsınız. Lütfen dikkatlice okuyun.
+                    </p>
+                </div>
+                <div class="grid lg:grid-cols-4 gap-8">
+                    <!-- Sol Navigasyon -->
+                    <aside class="lg:col-span-1">
+                        <nav id="terms-nav" class="sticky top-24">
+                            <a href="#terms-1" class="terms-nav-link">1. Giriş</a>
+                            <a href="#terms-2" class="terms-nav-link">2. Hizmetlerin Kullanımı</a>
+                            <a href="#terms-3" class="terms-nav-link">3. Kullanıcı Hesapları</a>
+                            <a href="#terms-4" class="terms-nav-link">4. Fikri Mülkiyet</a>
+                            <a href="#terms-5" class="terms-nav-link">5. Hizmetin Sonlandırılması</a>
+                            <a href="#terms-6" class="terms-nav-link">6. Sorumluluğun Sınırlandırılması</a>
+                            <a href="#terms-7" class="terms-nav-link">7. Değişiklikler</a>
+                            <a href="#terms-8" class="terms-nav-link">8. İletişim</a>
+                        </nav>
+                    </aside>
+                    <!-- Sağ İçerik -->
+                    <div id="terms-content" class="lg:col-span-3 prose prose-invert prose-lg max-w-none">
+                        <p class="text-gray-500 text-sm">Son Güncelleme: 04 Temmuz 2025</p>
+
+                        <section id="terms-1" class="terms-section">
+                            <h3>1. Giriş</h3>
+                            <p>Bu Kullanım Koşulları ("Koşullar"), InnoApp ("biz", "bize" veya "bizim") tarafından sunulan web sitesi, hizmetler ve uygulamalar (topluca "Hizmet") için yasal olarak bağlayıcı şartları ortaya koymaktadır. Hizmete erişerek veya hizmeti kullanarak, bu Koşullara bağlı kalmayı kabul edersiniz.</p>
+                        </section>
+
+                        <section id="terms-2" class="terms-section">
+                            <h3>2. Hizmetlerin Kullanımı</h3>
+                            <p>InnoApp, apartman ve site sakinleri ile yöneticiler arasında iletişimi kolaylaştıran, aidat takibi, duyuru paylaşımı ve diğer yönetimsel işlemleri dijitalleştiren bir platformdur. Hizmetlerimizi yalnızca yasal amaçlarla ve bu Koşullara uygun olarak kullanmayı kabul edersiniz.</p>
+                        </section>
+
+                        <section id="terms-3" class="terms-section">
+                            <h3>3. Kullanıcı Hesapları</h3>
+                            <p>Hizmetimizin belirli özelliklerini kullanmak için bir hesap oluşturmanız gerekebilir. Kayıt sırasında verdiğiniz bilgilerin doğru, güncel ve eksiksiz olduğunu taahhüt edersiniz. Hesap güvenliğinizden ve şifrenizin gizliliğinden siz sorumlusunuz. Hesabınız altında gerçekleşen tüm faaliyetlerin sorumluluğunu kabul edersiniz.</p>
+                        </section>
+
+                        <section id="terms-4" class="terms-section">
+                            <h3>4. Fikri Mülkiyet</h3>
+                            <p>Hizmet ve orijinal içeriği, özellikleri ve işlevselliği (tüm metinler, grafikler, logolar, ikonlar ve yazılımlar dahil ancak bunlarla sınırlı olmamak üzere) InnoApp'in ve lisans verenlerinin münhasır mülkiyetindedir ve telif hakkı, ticari marka ve diğer fikri mülkiyet yasalarıyla korunmaktadır.</p>
+                        </section>
+                        
+                        <section id="terms-5" class="terms-section">
+                            <h3>5. Hizmetin Sonlandırılması</h3>
+                            <p>Bu Koşullardan herhangi birini ihlal etmeniz de dahil olmak üzere, herhangi bir nedenle, önceden bildirimde bulunmaksızın veya yükümlülük altına girmeksizin hesabınızı derhal sonlandırabilir veya askıya alabiliriz. Sonlandırmanın ardından Hizmeti kullanma hakkınız derhal sona erecektir.</p>
+                        </section>
+
+                        <section id="terms-6" class="terms-section">
+                            <h3>6. Sorumluluğun Sınırlandırılması</h3>
+                            <p>InnoApp veya yöneticileri, çalışanları, ortakları, acenteleri, tedarikçileri veya iştirakleri, hiçbir durumda, (i) hizmete erişiminizden veya hizmeti kullanamamanızdan; (ii) hizmet üzerindeki herhangi bir üçüncü tarafın davranışından veya içeriğinden; (iii) hizmetten elde edilen herhangi bir içerikten kaynaklanan dolaylı, arızi, özel, sonuç olarak ortaya çıkan veya cezai zararlardan sorumlu tutulamaz.</p>
+                        </section>
+
+                        <section id="terms-7" class="terms-section">
+                            <h3>7. Değişiklikler</h3>
+                            <p>Kendi takdirimize bağlı olarak, bu Koşulları herhangi bir zamanda değiştirme veya yenileme hakkını saklı tutarız. Bir revizyonun önemli olması durumunda, yeni şartların yürürlüğe girmesinden en az 30 gün önce bildirimde bulunmaya çalışacağız. Önemli bir değişikliğin neyi oluşturduğu tamamen bizim takdirimize bağlı olarak belirlenecektir.</p>
+                        </section>
+
+                        <section id="terms-8" class="terms-section">
+                            <h3>8. İletişim</h3>
+                            <p>Bu Koşullar hakkında herhangi bir sorunuz varsa, lütfen <a href="#" data-page="contact" class="text-blue-400 hover:underline">iletişim sayfamızdan</a> bize ulaşın.</p>
+                        </section>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- GÜNCELLENMİŞ GİZLİLİK POLİTİKASI SAYFASI -->
         <section id="privacy-page" class="page">
             <div class="container mx-auto px-4 py-20">
-                <div class="max-w-4xl mx-auto bg-gray-800/20 p-8 rounded-lg prose prose-invert prose-lg">
-                    <h2 class="text-4xl font-bold gradient-text">Gizlilik Politikası</h2>
-                    <p class="text-gray-400">Son Güncelleme: 02 Temmuz 2025</p>
-                    <p>Bu politika, InnoApp'in kullanıcılarından topladığı bilgileri nasıl kullandığını ve koruduğunu açıklamaktadır.</p>
-                    <h3>1. Topladığımız Bilgiler</h3>
-                    <p>Sizden aşağıdaki bilgileri toplayabiliriz: Kişisel Bilgiler, Finansal Bilgiler, Kullanım Verileri.</p>
-                    <h3>2. Bilgilerin Kullanımı</h3>
-                    <p>Topladığımız bilgileri hizmetlerimizi sunmak, ödemeleri işlemek ve sizinle iletişim kurmak için kullanırız.</p>
+                <div class="text-center mb-16">
+                    <h2 class="reveal text-4xl font-bold mb-4">Gizlilik Politikası</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">
+                        Verilerinizin güvenliği ve gizliliği bizim için en önemli önceliktir.
+                    </p>
+                </div>
+                <div class="grid lg:grid-cols-4 gap-8">
+                    <!-- Sol Navigasyon -->
+                    <aside class="lg:col-span-1">
+                        <nav id="privacy-nav" class="sticky top-24">
+                            <a href="#privacy-1" class="privacy-nav-link">1. Genel Bakış</a>
+                            <a href="#privacy-2" class="privacy-nav-link">2. Topladığımız Bilgiler</a>
+                            <a href="#privacy-3" class="privacy-nav-link">3. Bilgilerin Kullanımı</a>
+                            <a href="#privacy-4" class="privacy-nav-link">4. Bilgilerin Paylaşımı</a>
+                            <a href="#privacy-5" class="privacy-nav-link">5. Veri Güvenliği</a>
+                            <a href="#privacy-6" class="privacy-nav-link">6. Çerez Politikası</a>
+                            <a href="#privacy-7" class="privacy-nav-link">7. Haklarınız</a>
+                            <a href="#privacy-8" class="privacy-nav-link">8. İletişim</a>
+                        </nav>
+                    </aside>
+                    <!-- Sağ İçerik -->
+                    <div id="privacy-content" class="lg:col-span-3 prose prose-invert prose-lg max-w-none">
+                        <p class="text-gray-500 text-sm">Son Güncelleme: 04 Temmuz 2025</p>
+
+                        <section id="privacy-1" class="privacy-section">
+                            <h3>1. Genel Bakış</h3>
+                            <p>Bu Gizlilik Politikası, InnoApp'in ("biz", "bize" veya "bizim") Hizmetlerimizi kullanan siz değerli kullanıcılarımızdan topladığı bilgileri nasıl kullandığını, paylaştığını ve koruduğunu açıklamaktadır. Gizliliğinize saygı duyuyoruz ve kişisel verilerinizi korumayı taahhüt ediyoruz.</p>
+                        </section>
+
+                        <section id="privacy-2" class="privacy-section">
+                            <h3>2. Topladığımız Bilgiler</h3>
+                            <p>Hizmetlerimizi sunmak ve geliştirmek için çeşitli türde bilgiler topluyoruz:</p>
+                            <ul>
+                                <li><strong>Kişisel Kimlik Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası, T.C. kimlik numarası (gerekli durumlarda), daire ve site bilgileri.</li>
+                                <li><strong>Finansal Bilgiler:</strong> Aidat ve fatura ödemeleri için kullanılan kredi kartı bilgileri gibi veriler, doğrudan güvenli ödeme işlemcimiz tarafından işlenir ve tarafımızca saklanmaz.</li>
+                                <li><strong>Kullanım Verileri:</strong> Hangi özellikleri kullandığınız, ne sıklıkla giriş yaptığınız, IP adresiniz, tarayıcı türünüz ve cihaz bilgileriniz gibi teknik veriler.</li>
+                                <li><strong>İletişim Verileri:</strong> Destek talepleriniz, geri bildirimleriniz ve bizimle olan diğer tüm iletişimleriniz.</li>
+                            </ul>
+                        </section>
+
+                        <section id="privacy-3" class="privacy-section">
+                            <h3>3. Bilgilerin Kullanımı</h3>
+                            <p>Topladığımız bilgileri aşağıdaki amaçlar için kullanırız:</p>
+                            <ul>
+                                <li>Hizmetlerimizi sunmak, sürdürmek ve iyileştirmek.</li>
+                                <li>Ödemeleri işlemek ve finansal kayıtları tutmak.</li>
+                                <li>Sizinle iletişim kurmak, bildirimler göndermek ve destek sağlamak.</li>
+                                <li>Hizmetlerimizi kişiselleştirmek ve kullanıcı deneyimini geliştirmek.</li>
+                                <li>Güvenliği sağlamak ve sahtekarlığı önlemek.</li>
+                                <li>Yasal yükümlülüklerimizi yerine getirmek.</li>
+                            </ul>
+                        </section>
+
+                        <section id="privacy-4" class="privacy-section">
+                            <h3>4. Bilgilerin Paylaşımı</h3>
+                            <p>Kişisel bilgilerinizi sizin onayınız olmadan üçüncü taraflarla satmayız, kiralamayız veya ticaretini yapmayız. Bilgilerinizi yalnızca aşağıdaki durumlarda paylaşabiliriz:</p>
+                             <ul>
+                                <li><strong>Site Yönetimi:</strong> Apartman veya site yöneticiniz, yönetimsel görevlerini yerine getirebilmek için adınız, daire numaranız ve borç durumunuz gibi bilgilere erişebilir.</li>
+                                <li><strong>Hizmet Sağlayıcılar:</strong> Ödeme işlemleri, veri analizi, e-posta gönderimi gibi hizmetleri bizim adımıza yürüten üçüncü taraf şirketlerle.</li>
+                                <li><strong>Yasal Zorunluluklar:</strong> Yasal bir sürece uymak, mahkeme kararına yanıt vermek veya devlet taleplerini karşılamak için.</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="privacy-5" class="privacy-section">
+                            <h3>5. Veri Güvenliği</h3>
+                            <p>Verilerinizin güvenliğini sağlamak için endüstri standardı teknik ve idari güvenlik önlemleri alıyoruz. Tüm veri aktarımları SSL/TLS şifrelemesi ile korunmaktadır. Ancak, internet üzerinden hiçbir iletim yönteminin veya elektronik depolama yönteminin %100 güvenli olmadığını lütfen unutmayın.</p>
+                        </section>
+
+                        <section id="privacy-6" class="privacy-section">
+                            <h3>6. Çerez Politikası</h3>
+                            <p>Web sitemiz, kullanıcı deneyimini geliştirmek için çerezler kullanmaktadır. Çerezler, tarayıcınız tarafından bilgisayarınızda saklanan küçük metin dosyalarıdır. Hizmetimizi kullanarak çerez kullanımımızı kabul etmiş olursunuz. Tarayıcı ayarlarınızdan çerezleri yönetebilir veya silebilirsiniz.</p>
+                        </section>
+
+                        <section id="privacy-7" class="privacy-section">
+                            <h3>7. Haklarınız</h3>
+                            <p>Kişisel verilerinizle ilgili olarak erişim, düzeltme, silme ve işlemeyi kısıtlama gibi haklara sahipsiniz. Bu haklarınızı kullanmak için lütfen bizimle iletişime geçin.</p>
+                        </section>
+
+                        <section id="privacy-8" class="privacy-section">
+                            <h3>8. İletişim</h3>
+                            <p>Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, lütfen <a href="#" data-page="contact" class="text-blue-400 hover:underline">iletişim sayfamızdan</a> bize ulaşın.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SSS SAYFASI -->
+        <section id="faq-page" class="page">
+            <div class="container mx-auto px-4 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="reveal text-4xl font-bold mb-4">Sıkça Sorulan Sorular</h2>
+                    <p class="reveal text-xl text-gray-400 max-w-3xl mx-auto" style="--delay: 100ms;">
+                        Aklınıza takılan soruların cevaplarını burada bulabilirsiniz.
+                    </p>
+                </div>
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <details class="faq-item-new">
+                        <summary class="faq-question-new">InnoApp nedir ve ne işe yarar?</summary>
+                        <p class="faq-answer-new">InnoApp, apartman ve site yönetimini dijitalleştiren, yöneticiler ve sakinler için hayatı kolaylaştıran bir platformdur. Aidat takibi, duyuru paylaşımı, online oylama, arıza bildirimi gibi birçok özelliği tek bir çatı altında toplar.</p>
+                    </details>
+                    <details class="faq-item-new">
+                        <summary class="faq-question-new">Aidatımı uygulama üzerinden nasıl ödeyebilirim?</summary>
+                        <p class="faq-answer-new">"Finans" bölümüne giderek mevcut borcunuzu görüntüleyebilir ve "Ödeme Yap" butonuna tıklayarak kredi veya banka kartınızla güvenli bir şekilde ödemenizi tamamlayabilirsiniz.</p>
+                    </details>
+                     <details class="faq-item-new">
+                        <summary class="faq-question-new">Verilerim güvende mi?</summary>
+                        <p class="faq-answer-new">Evet. Kişisel verilerinizin güvenliği en büyük önceliğimizdir. Tüm verileriniz, en güncel şifreleme standartları (256-bit SSL) ile korunmaktadır. Ödeme bilgileriniz asla sunucularımızda saklanmaz, doğrudan güvenli ödeme ortaklarımız tarafından işlenir.</p>
+                    </details>
+                     <details class="faq-item-new">
+                        <summary class="faq-question-new">Uygulamayı kullanmak için ücret ödemem gerekiyor mu?</summary>
+                        <p class="faq-answer-new">InnoApp'in kullanımı, site veya apartman yönetiminizin seçtiği pakete göre belirlenir. Bireysel kullanıcılar (sakinler) genellikle bir ücret ödemezler. Yöneticiler için farklı ihtiyaçlara yönelik esnek fiyatlandırma paketlerimiz mevcuttur.</p>
+                    </details>
+                     <details class="faq-item-new">
+                        <summary class="faq-question-new">Bir arıza olduğunda ne yapmalıyım?</summary>
+                        <p class="faq-answer-new">"Destek" veya "Arıza Bildir" bölümünden, sorunun fotoğrafını ve kısa bir açıklamasını ekleyerek kolayca yeni bir bildirim oluşturabilirsiniz. Bildiriminiz anında yöneticiye iletilir ve sürecin durumunu uygulama üzerinden takip edebilirsiniz.</p>
+                    </details>
+                     <details class="faq-item-new">
+                        <summary class="faq-question-new">Yapay zeka asistanı hangi konularda yardımcı olabilir?</summary>
+                        <p class="faq-answer-new">Akıllı asistanımız; uygulama kullanımı, aidat bilgileri, arıza bildirimleri ve genel yönetim konularında size 7/24 destek olabilir. Karmaşık sorularınız için sizi ilgili birimlere yönlendirir.</p>
+                    </details>
                 </div>
             </div>
         </section>

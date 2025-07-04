@@ -1,83 +1,393 @@
+/**
+ * ----------------------------------------------------------------
+ * UI Modülü - InnoApp
+ * ----------------------------------------------------------------
+ * Bu dosya, projenin tüm kullanıcı arayüzü (UI) etkileşimlerini
+ * yönetir. Sayfa geçişleri, animasyonlar ve bileşenlerin
+ * başlatılması gibi işlemler burada organize edilir.
+ * ----------------------------------------------------------------
+ */
+
+// --- Global Değişkenler ve DOM Referansları ---
 const pages = document.querySelectorAll('.page');
 const allNavLinks = document.querySelectorAll('a[data-page], button[data-page]');
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
-let vantaEffect = null; 
+const scrollToTopButton = document.getElementById('scroll-to-top');
+const contactForm = document.getElementById('contact-form');
+let vantaEffect = null;
+let adminChart = null; // Chart instance'ını tutmak için
 
+// --- Animasyonlar ---
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); 
+/**
+ * Sayfa kaydırıldığında elemanları ortaya çıkaran animasyon için
+ * IntersectionObserver'ı başlatır.
+ */
+const initRevealOnScroll = () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+    });
+};
+
+// --- Bileşen Başlatıcıları (Component Initializers) ---
+
+/**
+ * Ana sayfadaki yatay proje kaydırıcısının (slider)
+ * fonksiyonelliğini başlatır.
+ */
+const initProjectSlider = () => {
+    const prevButton = document.getElementById("prev-slide");
+    const nextButton = document.getElementById("next-slide");
+    const slider = document.querySelector(".project-slider");
+
+    if (!slider || !prevButton || !nextButton) return;
+
+    const slide = (direction) => {
+        const slideWidth = slider.querySelector('.slider-item').clientWidth;
+        slider.scrollBy({ left: slideWidth * direction, behavior: "smooth" });
+    };
+
+    prevButton.addEventListener("click", () => slide(-1));
+    nextButton.addEventListener("click", () => slide(1));
+
+    const handleSlideButtons = () => {
+        prevButton.disabled = slider.scrollLeft <= 0;
+        nextButton.disabled = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth;
+    };
+
+    slider.addEventListener("scroll", handleSlideButtons);
+    handleSlideButtons(); // İlk yüklemede buton durumunu ayarla
+};
+
+/**
+ * Fiyatlandırma sayfasındaki Aylık/Yıllık geçiş anahtarını (toggle)
+ * ve fiyat güncelleme animasyonlarını başlatır.
+ */
+const initPricingToggle = () => {
+    const checkbox = document.getElementById('pricing-checkbox');
+    if (!checkbox) return;
+
+    const monthlyLabel = document.getElementById('monthly-label');
+    const annualLabel = document.getElementById('annual-label');
+    const priceTags = document.querySelectorAll('.price-tag');
+    const periodTags = document.querySelectorAll('.period-tag');
+
+    checkbox.addEventListener('change', () => {
+        const isAnnual = checkbox.checked;
+
+        // Label stillerini güncelle
+        monthlyLabel.classList.toggle('text-gray-500', isAnnual);
+        annualLabel.classList.toggle('text-gray-500', !isAnnual);
+
+        // Fiyatları ve periyotları animasyonlu güncelle
+        priceTags.forEach(priceTag => {
+            if (priceTag.dataset.monthly && priceTag.dataset.annual) {
+                const newPrice = isAnnual ? priceTag.dataset.annual : priceTag.dataset.monthly;
+                
+                // Fiyatı yumuşak bir geçişle değiştir
+                priceTag.style.opacity = '0';
+                setTimeout(() => {
+                    priceTag.textContent = `₺${newPrice}`;
+                    priceTag.style.opacity = '1';
+                }, 200);
+            }
+        });
+
+        periodTags.forEach(periodTag => {
+            if(periodTag.textContent.trim() !== '') { // Sadece dolu olanları değiştir
+                 periodTag.textContent = isAnnual ? '/yıllık' : '/aylık';
+            }
+        });
+    });
+};
+
+/**
+ * Özellik kartlarına fare etkileşimli 3D eğim efekti ekler.
+ */
+const init3dCardTilt = () => {
+    const cards = document.querySelectorAll('.feature-card-final');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 15; // Hassasiyet ayarı
+            const rotateY = (centerX - x) / 15; // Hassasiyet ayarı
+
+            card.style.transition = 'transform 0.1s linear'; // Fareyi takip ederken hızlı geçiş
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.5s cubic-bezier(.21,.6,.35,1)'; // Karttan ayrılırken yavaş ve yumuşak geçiş
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+        });
+    });
+};
+
+/**
+ * Yönetici panelindeki finansal durum grafiğini başlatır.
+ */
+const initAdminPanelChart = () => {
+    const ctx = document.getElementById('financial-chart');
+    if (!ctx) return;
+
+    if (adminChart) {
+        adminChart.destroy();
+    }
+
+    const data = {
+        labels: ['Aidat Gelirleri', 'Dış Cephe Gideri', 'Personel Maaşları', 'Diğer Giderler'],
+        datasets: [{
+            label: 'Bu Ayki Finansal Dağılım',
+            data: [12500, 5000, 3500, 1500],
+            backgroundColor: [
+                'rgba(59, 130, 246, 0.7)',
+                'rgba(239, 68, 68, 0.7)',
+                'rgba(245, 158, 11, 0.7)',
+                'rgba(139, 92, 246, 0.7)'
+            ],
+            borderColor: [
+                '#3b82f6',
+                '#ef4444',
+                '#f59e0b',
+                '#8b5cf6'
+            ],
+            borderWidth: 2,
+            hoverOffset: 8
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    color: '#d1d5db',
+                    font: { size: 14 }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed !== null) {
+                            label += new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(context.parsed);
+                        }
+                        return label;
+                    }
+                }
+            }
+        }
+    };
+
+    adminChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options,
+    });
+};
+
+/**
+ * Destek sayfasındaki görsel yükleme ve önizleme
+ * fonksiyonelliğini başlatır.
+ */
+const initSupportImageUpload = () => {
+    const imageInput = document.getElementById('troubleshoot-image');
+    const previewContainer = document.getElementById('image-preview-container');
+    const previewImage = document.getElementById('image-preview');
+    const removeButton = document.getElementById('remove-image-btn');
+    const attachButton = document.querySelector('.support-attach-btn');
+
+    if (!imageInput || !previewContainer || !previewImage || !removeButton || !attachButton) return;
+
+    imageInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewContainer.classList.remove('hidden');
+                attachButton.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
         }
     });
-}, { threshold: 0.1 });
 
+    removeButton.addEventListener('click', () => {
+        imageInput.value = ''; // Dosya seçimini temizle
+        previewImage.src = '';
+        previewContainer.classList.add('hidden');
+        attachButton.classList.remove('hidden');
+    });
+};
 
+/**
+ * Yasal sayfalardaki (Kullanım Koşulları, Gizlilik Politikası)
+ * yan menü navigasyonunu ve scroll-spy özelliğini başlatır.
+ * @param {string} navId - Navigasyon menüsünün ID'si
+ * @param {string} sectionClass - Gözetlenecek bölümlerin sınıfı
+ */
+const initLegalPageNav = (navId, sectionClass) => {
+    const navLinks = document.querySelectorAll(`#${navId} a`);
+    const sections = document.querySelectorAll(`.${sectionClass}`);
+
+    if (navLinks.length === 0 || sections.length === 0) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+                });
+            }
+        });
+    }, { rootMargin: "-40% 0px -60% 0px" });
+
+    sections.forEach(section => observer.observe(section));
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+};
 
 
 /**
- * 
- * @param {string} pageId 
+ * Mobil menünün açılıp kapanma fonksiyonelliğini başlatır.
+ */
+const initMobileMenu = () => {
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('menu-open');
+        });
+    }
+};
+
+/**
+ * Sayfanın en üstüne hızlıca çıkmayı sağlayan butonu başlatır.
+ */
+const initScrollToTop = () => {
+    if (scrollToTopButton) {
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        window.addEventListener('scroll', () => {
+            scrollToTopButton.classList.toggle('is-visible', window.scrollY > 400);
+        });
+    }
+};
+
+/**
+ * İletişim formunun gönderim işlemini ve başarı mesajını yönetir.
+ */
+const initContactForm = () => {
+    if (contactForm) {
+        const successMessage = document.getElementById('contact-success-message');
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            contactForm.classList.add('hidden');
+            if (successMessage) {
+                successMessage.classList.remove('hidden');
+            }
+        });
+    }
+};
+
+
+// --- Çekirdek Fonksiyonlar (Core Functions) ---
+
+/**
+ * Belirtilen ID'ye sahip sayfayı gösterir ve diğerlerini gizler.
+ * @param {string} pageId - Gösterilecek sayfanın ID'si (ör: 'home', 'features').
  */
 const showPage = (pageId = 'home') => {
-    
     if (vantaEffect) {
         vantaEffect.destroy();
         vantaEffect = null;
     }
+    if (adminChart) {
+        adminChart.destroy();
+        adminChart = null;
+    }
 
+    pages.forEach(page => page.classList.remove('active'));
     
-    pages.forEach(page => {
-        page.classList.remove('active');
-    });
-    
-    
-    const targetPage = document.getElementById(pageId + '-page');
+    const targetPage = document.getElementById(`${pageId}-page`);
     if (targetPage) {
         targetPage.classList.add('active');
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
 
-        
         targetPage.querySelectorAll('.reveal').forEach((el) => {
-            el.classList.remove('visible'); 
-            observer.observe(el); 
+            el.classList.remove('visible');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    entries[0].target.classList.add('visible');
+                    observer.disconnect();
+                }
+            }, { threshold: 0.1 });
+            observer.observe(el);
         });
 
+        if (pageId === 'panel') {
+            initAdminPanelChart();
+        }
+
+        if (pageId === 'terms') {
+            initLegalPageNav('terms-nav', 'terms-section');
+        }
+        
+        if (pageId === 'privacy') {
+            initLegalPageNav('privacy-nav', 'privacy-section');
+        }
 
         if (pageId === 'home' && typeof VANTA !== 'undefined') {
             vantaEffect = VANTA.GLOBE({
-                el: "#globe-container",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x2563eb,
-                color2: 0x93c5fd,
-                backgroundColor: 0x02040a,
-                size: 1.20
+                el: "#globe-container", mouseControls: true, touchControls: true, gyroControls: false,
+                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+                color: 0x2563eb, color2: 0x93c5fd, backgroundColor: 0x02040a, size: 1.20
             });
         }
     }
 
-    
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.toggle('active', link.dataset.page === pageId);
     });
 
-    
     if (mobileMenu) {
        mobileMenu.classList.remove('menu-open');
     }
 };
 
+
+// --- Ana Başlatıcı Fonksiyon ---
+
 /**
  * Tüm arayüz etkileşimlerini başlatan ana fonksiyon.
- * Bu fonksiyon main.js'den çağrılır.
  */
 export const initUI = () => {
     allNavLinks.forEach(link => {
@@ -87,61 +397,18 @@ export const initUI = () => {
         });
     });
 
+    // Gerekli tüm UI bileşenlerini başlat
+    initMobileMenu();
+    initScrollToTop();
+    initContactForm();
+    initProjectSlider();
+    initPricingToggle();
+    init3dCardTilt();
+    initSupportImageUpload(); 
     
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('menu-open');
-        });
-    }
-
+    // Scroll animasyonlarını etkinleştir
+    initRevealOnScroll();
     
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-    if (scrollToTopButton) {
-      scrollToTopButton.addEventListener('click', () => { 
-          window.scrollTo({ top: 0, behavior: 'smooth' }); 
-      });
-      window.addEventListener('scroll', () => {
-        scrollToTopButton.classList.toggle('is-visible', window.scrollY > 400);
-      });
-    }
-
-    // SSS 
-    const faqAccordion = document.getElementById('faq-accordion');
-    if (faqAccordion) {
-        const faqItems = faqAccordion.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const questionButton = item.querySelector('.faq-question');
-            questionButton.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                });
-
-               
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    }
-
- 
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        const successMessage = document.getElementById('contact-success-message');
-        contactForm.addEventListener('submit', (event) => {
-            event.preventDefault(); 
-
-
-            contactForm.classList.add('hidden');
-            if (successMessage) {
-                successMessage.classList.remove('hidden');
-            }
-        });
-    }
-
-
+    // Varsayılan olarak ana sayfayı göster
     showPage('home');
 };
