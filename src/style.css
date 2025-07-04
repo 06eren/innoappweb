@@ -542,7 +542,7 @@ input:checked + .pricing-slider:before {
     @apply bg-blue-600 text-white rounded-br-none;
 }
 .user-message .chat-avatar {
-    /* Kullanıcı için avatarı gizleyebilir veya farklı bir stil uygulayabiliriz */
+    
     display: none;
 }
 
@@ -597,7 +597,7 @@ input:checked + .pricing-slider:before {
     @apply flex items-center gap-4 p-4 bg-gray-800/50 rounded-lg;
 }
 
-/* --- BİZ KİMİZ SAYFASI STİLLERİ --- */
+/*BİZ KİMİZ SAYFASI STİLLERİ  */
 .team-card {
     @apply bg-gray-900/50 p-6 rounded-2xl text-center border border-transparent hover:border-blue-500 transition-all duration-300 hover:-translate-y-2;
 }
@@ -611,7 +611,7 @@ input:checked + .pricing-slider:before {
     @apply text-gray-500 hover:text-blue-400 transition-colors;
 }
 
-/* --- İLETİŞİM SAYFASI STİLLERİ --- */
+/* İLETİŞİM SAYFASI STİLLERİ */
 .contact-info-card {
     @apply flex items-start gap-6 p-6 bg-gray-900/50 rounded-2xl border border-white/10;
 }
@@ -628,7 +628,7 @@ input:checked + .pricing-slider:before {
     @apply w-full bg-gray-800/50 border-2 border-gray-700 rounded-lg px-4 py-3 focus:border-blue-500 focus:ring-0 outline-none transition-colors;
 }
 
-/* --- YASAL SAYFALAR (KULLANIM KOŞULLARI & GİZLİLİK) STİLLERİ --- */
+/* KULLANIM KOŞULLARI & GİZLİLİK STİLLERİ*/
 .terms-nav-link, .privacy-nav-link {
     @apply block px-4 py-2 rounded-md text-gray-400 font-medium transition-colors hover:bg-gray-800/50 hover:text-white;
 }
@@ -639,7 +639,7 @@ input:checked + .pricing-slider:before {
     @apply mb-12;
 }
 
-/* --- YENİ: SSS SAYFASI STİLLERİ --- */
+/* ---  SSS SAYFASI STİLLERİ --- */
 .faq-item-new {
     @apply bg-gray-900/50 border border-white/10 rounded-xl;
 }
@@ -668,7 +668,7 @@ input:checked + .pricing-slider:before {
 }
 
 
-/* --- FOOTER STİLLERİ --- */
+
 footer .flex.space-x-4 a {
     @apply transition-all duration-300 ease-in-out;
 }

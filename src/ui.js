@@ -1,14 +1,3 @@
-/**
- * ----------------------------------------------------------------
- * UI Modülü - InnoApp
- * ----------------------------------------------------------------
- * Bu dosya, projenin tüm kullanıcı arayüzü (UI) etkileşimlerini
- * yönetir. Sayfa geçişleri, animasyonlar ve bileşenlerin
- * başlatılması gibi işlemler burada organize edilir.
- * ----------------------------------------------------------------
- */
-
-// --- Global Değişkenler ve DOM Referansları ---
 const pages = document.querySelectorAll('.page');
 const allNavLinks = document.querySelectorAll('a[data-page], button[data-page]');
 const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -16,14 +5,9 @@ const mobileMenu = document.getElementById('mobile-menu');
 const scrollToTopButton = document.getElementById('scroll-to-top');
 const contactForm = document.getElementById('contact-form');
 let vantaEffect = null;
-let adminChart = null; // Chart instance'ını tutmak için
+let adminChart = null; 
 
-// --- Animasyonlar ---
 
-/**
- * Sayfa kaydırıldığında elemanları ortaya çıkaran animasyon için
- * IntersectionObserver'ı başlatır.
- */
 const initRevealOnScroll = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -39,12 +23,7 @@ const initRevealOnScroll = () => {
     });
 };
 
-// --- Bileşen Başlatıcıları (Component Initializers) ---
 
-/**
- * Ana sayfadaki yatay proje kaydırıcısının (slider)
- * fonksiyonelliğini başlatır.
- */
 const initProjectSlider = () => {
     const prevButton = document.getElementById("prev-slide");
     const nextButton = document.getElementById("next-slide");
@@ -66,13 +45,10 @@ const initProjectSlider = () => {
     };
 
     slider.addEventListener("scroll", handleSlideButtons);
-    handleSlideButtons(); // İlk yüklemede buton durumunu ayarla
+    handleSlideButtons(); 
 };
 
-/**
- * Fiyatlandırma sayfasındaki Aylık/Yıllık geçiş anahtarını (toggle)
- * ve fiyat güncelleme animasyonlarını başlatır.
- */
+
 const initPricingToggle = () => {
     const checkbox = document.getElementById('pricing-checkbox');
     if (!checkbox) return;
@@ -85,16 +61,16 @@ const initPricingToggle = () => {
     checkbox.addEventListener('change', () => {
         const isAnnual = checkbox.checked;
 
-        // Label stillerini güncelle
+        
         monthlyLabel.classList.toggle('text-gray-500', isAnnual);
         annualLabel.classList.toggle('text-gray-500', !isAnnual);
 
-        // Fiyatları ve periyotları animasyonlu güncelle
+        
         priceTags.forEach(priceTag => {
             if (priceTag.dataset.monthly && priceTag.dataset.annual) {
                 const newPrice = isAnnual ? priceTag.dataset.annual : priceTag.dataset.monthly;
                 
-                // Fiyatı yumuşak bir geçişle değiştir
+                
                 priceTag.style.opacity = '0';
                 setTimeout(() => {
                     priceTag.textContent = `₺${newPrice}`;
@@ -111,9 +87,7 @@ const initPricingToggle = () => {
     });
 };
 
-/**
- * Özellik kartlarına fare etkileşimli 3D eğim efekti ekler.
- */
+
 const init3dCardTilt = () => {
     const cards = document.querySelectorAll('.feature-card-final');
 
@@ -124,23 +98,21 @@ const init3dCardTilt = () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 15; // Hassasiyet ayarı
-            const rotateY = (centerX - x) / 15; // Hassasiyet ayarı
+            const rotateX = (y - centerY) / 15; 
+            const rotateY = (centerX - x) / 15; 
 
-            card.style.transition = 'transform 0.1s linear'; // Fareyi takip ederken hızlı geçiş
+            card.style.transition = 'transform 0.1s linear'; 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transition = 'transform 0.5s cubic-bezier(.21,.6,.35,1)'; // Karttan ayrılırken yavaş ve yumuşak geçiş
+            card.style.transition = 'transform 0.5s cubic-bezier(.21,.6,.35,1)'; 
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
         });
     });
 };
 
-/**
- * Yönetici panelindeki finansal durum grafiğini başlatır.
- */
+
 const initAdminPanelChart = () => {
     const ctx = document.getElementById('financial-chart');
     if (!ctx) return;
@@ -206,10 +178,7 @@ const initAdminPanelChart = () => {
     });
 };
 
-/**
- * Destek sayfasındaki görsel yükleme ve önizleme
- * fonksiyonelliğini başlatır.
- */
+
 const initSupportImageUpload = () => {
     const imageInput = document.getElementById('troubleshoot-image');
     const previewContainer = document.getElementById('image-preview-container');
@@ -241,10 +210,9 @@ const initSupportImageUpload = () => {
 };
 
 /**
- * Yasal sayfalardaki (Kullanım Koşulları, Gizlilik Politikası)
- * yan menü navigasyonunu ve scroll-spy özelliğini başlatır.
- * @param {string} navId - Navigasyon menüsünün ID'si
- * @param {string} sectionClass - Gözetlenecek bölümlerin sınıfı
+
+ * @param {string} navId i
+ * @param {string} sectionClass 
  */
 const initLegalPageNav = (navId, sectionClass) => {
     const navLinks = document.querySelectorAll(`#${navId} a`);
@@ -277,9 +245,7 @@ const initLegalPageNav = (navId, sectionClass) => {
 };
 
 
-/**
- * Mobil menünün açılıp kapanma fonksiyonelliğini başlatır.
- */
+
 const initMobileMenu = () => {
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
@@ -288,9 +254,7 @@ const initMobileMenu = () => {
     }
 };
 
-/**
- * Sayfanın en üstüne hızlıca çıkmayı sağlayan butonu başlatır.
- */
+
 const initScrollToTop = () => {
     if (scrollToTopButton) {
         scrollToTopButton.addEventListener('click', () => {
@@ -302,9 +266,7 @@ const initScrollToTop = () => {
     }
 };
 
-/**
- * İletişim formunun gönderim işlemini ve başarı mesajını yönetir.
- */
+
 const initContactForm = () => {
     if (contactForm) {
         const successMessage = document.getElementById('contact-success-message');
@@ -319,11 +281,11 @@ const initContactForm = () => {
 };
 
 
-// --- Çekirdek Fonksiyonlar (Core Functions) ---
+
 
 /**
- * Belirtilen ID'ye sahip sayfayı gösterir ve diğerlerini gizler.
- * @param {string} pageId - Gösterilecek sayfanın ID'si (ör: 'home', 'features').
+ * 
+ * @param {string} pageId - 
  */
 const showPage = (pageId = 'home') => {
     if (vantaEffect) {
@@ -384,11 +346,7 @@ const showPage = (pageId = 'home') => {
 };
 
 
-// --- Ana Başlatıcı Fonksiyon ---
 
-/**
- * Tüm arayüz etkileşimlerini başlatan ana fonksiyon.
- */
 export const initUI = () => {
     allNavLinks.forEach(link => {
         link.addEventListener('click', (event) => {
@@ -397,7 +355,7 @@ export const initUI = () => {
         });
     });
 
-    // Gerekli tüm UI bileşenlerini başlat
+    
     initMobileMenu();
     initScrollToTop();
     initContactForm();
@@ -406,9 +364,9 @@ export const initUI = () => {
     init3dCardTilt();
     initSupportImageUpload(); 
     
-    // Scroll animasyonlarını etkinleştir
+    
     initRevealOnScroll();
     
-    // Varsayılan olarak ana sayfayı göster
+    
     showPage('home');
 };
